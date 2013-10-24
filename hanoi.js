@@ -1,19 +1,9 @@
-(function (root) {
-  var Hanoi = root.Hanoi = (root.Hanoi || {});
-
-  var readline = require('readline');
-  var READER = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
+(function () {
+  var Hanoi = window.Hanoi = (window.Hanoi || {});
 
   var Game = Hanoi.Game = function () {
-    this.towers = [[3, 2, 1], [], []];
+    this.towers = [[2, 1, 0], [], []];
   };
-
-  Game.prototype.turn = function () {
-
-  }
 
   Game.prototype.isWon = function () {
     // move all the discs to the last tower
@@ -36,6 +26,7 @@
   };
 
   Game.prototype.move = function (startTowerIdx, endTowerIdx) {
+    console.log("!!!!!!!!")
     if (this.isValidMove(startTowerIdx, endTowerIdx)) {
       this.towers[endTowerIdx].push(this.towers[startTowerIdx].pop());
       return true;
@@ -46,12 +37,19 @@
 
   Game.prototype.run = function () {
     var game = this;
-
-    READER.question("Enter a starting tower: ",function (start) {
-      var startTowerIdx = parseInt(start);
-      READER.question("Enter an ending tower: ", function (end) {
-        var endTowerIdx = parseInt(end);
-        game.takeTurn(startTowerIdx,endTowerIdx);
+    var startTowerIdx = null;
+    $(document).ready(function(){
+      $('.pile').click(function (el) {
+        clickedPile = $(this).attr('data-id')
+        if (startTowerIdx === null){
+           startTowerIdx = parseInt(clickedPile);
+         }
+        else{
+           endTowerIdx = parseInt(clickedPile);
+           game.takeTurn(startTowerIdx,endTowerIdx);
+           startTowerIdx = null;
+           Hanoi_UI.render(game.towers);
+        }
       });
     });
   };
@@ -62,17 +60,14 @@
     if (game.move(start,end)) {
       console.log(game.towers);
     } else {
-      console.log("Invalid move!")
+      alert("Invalid move!")
     }
 
     if (game.isWon()) {
-      console.log("You win!");
-      READER.close();
-    } else {
-      game.run();
+      alert("You win!");
     }
   }
-})(this);
+})();
 
 // this.Hanoi.Game is a constructor function, so we instantiate a new object, then run it.
 

@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <script src="jquery-1.9.1.js"></script>
+    <script src="underscore.js"></script>
+    <script src="towers_UI.js"></script>
+    <script src="hanoi.js"></script>
+    <link href='hanoi_css.css' rel="stylesheet">
+</head>
+
+<body>
+<div class='board'>
+    <div class='pile' data-id='0'>
+        <div class='grid-square' data-loc='[0,2]'>
+          <div data-disc="0" id="disc1"></div>
+        </div>
+        <div class='grid-square' data-loc='[0,1]'>
+          <div data-disc="1" id="disc2" ></div>
+        </div>
+        <div class='grid-square' data-loc='[0,0]'>
+          <div data-disc="2" id="disc3"></div>
+        </div>
+    </div>
+    <div class="pile" data-id='1'>
+        <div class='grid-square' data-loc='[1,2]'></div>
+        <div class='grid-square' data-loc='[1,1]'></div>
+        <div class='grid-square' data-loc='[1,0]'></div>
+    </div>
+    <div class="pile" data-id='2'>
+        <div class='grid-square' data-loc='[2,2]'></div>
+        <div class='grid-square' data-loc='[2,1]'></div>
+        <div class='grid-square' data-loc='[2,0]'></div>
+    </div>
+</div>
+
+</body>
+
+</html>
