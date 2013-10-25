@@ -1,0 +1,25 @@
+div {
+  float: left;
+}
+
+.board {
+  height: 80%;
+  width: 80%;
+}
+
+.blank {
+  height: 10%;
+  width: 10%;
+}
+
+.snake {
+  background-color: #BADA55;
+  height: 10%;
+  width: 10%;
+}
+
+.apple {
+  background-color: red;
+  height: 10%;
+  width: 10%;
+}
